@@ -84,7 +84,7 @@
 
 ### To run the EXE
 
-- ✅ **Nothing to install** — just download `Shuky_v2.5.exe` and run it
+- ✅ **Nothing to install** — just download `Shuky_v3.0.1.exe` and run it
 - Windows 10/11 recommended
 
 ---
@@ -92,15 +92,15 @@
 ## 💻 Installation & Run (Python)
 
 ```bash
-# 1. Clone the repository
+# Clone the repository
 git clone https://github.com/engrshuvodas/Shuky.git
 cd Shuky
 
-# 2. Install dependencies
-pip install pyautogui
+# Install dependencies
+pip install -r requirements.txt
 
-# 3. Launch the app
-python Shuky.py
+# Launch the app (run from project root, not from src/)
+python src/Shuky.py
 ```
 
 **Usage steps after launching:**
@@ -128,12 +128,15 @@ If you prefer to compile from source:
 # Install PyInstaller
 pip install pyinstaller
 
+# Run from the src/ directory
+cd src
+
 # Build single-file windowed EXE with custom icon (icon also bundled inside via --add-data)
 pyinstaller --onefile --windowed \
-  --icon="shukylogo.ico" \
-  --add-data "shukylogo.ico;." \
+  --icon="../assets/icons/shukylogo.ico" \
+  --add-data "../assets/icons/shukylogo.ico;assets/icons" \
   --name="Shuky_v3.0.1" \
-  --distpath="v3.0.1" \
+  --distpath="../releases/v3.0.1" \
   Shuky.py
 ```
 
@@ -190,15 +193,27 @@ For each character:
 ## 📁 Project Structure
 
 ```
-Shuky/
-├── Shuky.py              ← Main application source
-├── shukylogo.ico         ← App icon (title bar, taskbar & EXE)
-├── logo.png              ← Logo image
-├── README.md             ← This file
-├── v2.4/                 ← Previous release
-│   └── Shuky_v2.4.exe
-└── v3.0.1/               ← Current release
-    └── Shuky_v3.0.1.exe
+Shuky/                          ← project root
+├── .github/
+│   └── ISSUE_TEMPLATE/
+│       └── bug_report.md       ← GitHub issue template
+├── assets/
+│   ├── icons/
+│   │   └── shukylogo.ico       ← app icon (title bar, taskbar & EXE)
+│   └── images/
+│       ├── logo.png             ← logo
+│       └── Shuky Preview.png   ← UI screenshot
+├── releases/
+│   ├── v2.4/
+│   │   └── Shuky_v2.4.exe      ← previous release
+│   └── v3.0.1/
+│       └── Shuky_v3.0.1.exe    ← current release ✅
+├── src/
+│   └── Shuky.py                ← main application source
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ---

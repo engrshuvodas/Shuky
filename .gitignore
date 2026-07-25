@@ -1,0 +1,54 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+eggs/
+.eggs/
+*.whl
+
+# === PyInstaller Build Artifacts ===
+build/
+build_temp/
+*.spec
+*.pkg
+
+# === Virtual Environments ===
+.venv/
+venv/
+env/
+ENV/
+.env
+
+# === IDE & Editor ===
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+*.sublime-project
+*.sublime-workspace
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# === Logs & Temp ===
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# === Testing ===
+.pytest_cache/
+.coverage
+htmlcov/
