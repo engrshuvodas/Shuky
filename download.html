@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Shuky v3.0.1 — Advanced Human-Like Typing Bot</title>
+    <meta name="description"
+        content="Download the latest version of Shuky — a human-like typing automation bot with realistic delays, error simulation, and auto-correction. No Python required.">
+    <meta name="author" content="Engr Shuvo Das">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Download Shuky v3.0.1">
+    <meta property="og:description" content="Advanced Human-Like Typing Bot for Windows — free download.">
+    <meta property="og:image" content="./assets/images/Shuky Preview.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1c2e 0%, #2d3561 50%, #1a1c2e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated mesh background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(52, 152, 219, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 85% 20%, rgba(155, 89, 182, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(46, 204, 113, 0.12) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Floating background animations */
+        .bg-animations {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.35);
+            user-select: none;
+            animation: float-up linear infinite;
+        }
+
+        @keyframes float-up {
+            0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 0.8; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* ─── Layout ─── */
+        .container {
+            max-width: 960px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── Header ─── */
+        .header {
+            background: linear-gradient(135deg, #1a1c2e 0%, #2c3e50 50%, #3498db 100%);
+            padding: 48px 40px 68px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-shimmer {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%   { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -24px;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background: white;
+            border-radius: 60% 60% 0 0 / 100% 100% 0 0;
+        }
+
+        .logo-wrap {
+            width: 88px;
+            height: 88px;
+            background: white;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 22px;
+            font-size: 44px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-title {
+            color: white;
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            color: rgba(255,255,255,0.75);
+            font-size: 15px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.25);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ─── Content ─── */
+        .content {
+            padding: 44px 40px 40px;
+        }
+
+        /* ─── Alert ─── */
+        .alert-antivirus {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin-bottom: 28px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .alert-antivirus-icon { font-size: 26px; flex-shrink: 0; line-height: 1; }
+
+        .alert-antivirus-body { font-size: 14px; color: #78350f; line-height: 1.6; }
+
+        .alert-antivirus-body strong { color: #92400e; }
+
+        /* ─── Info Grid ─── */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            background: #f8faff;
+            padding: 18px 20px;
+            border-radius: 14px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s;
+        }
+
+        .info-item:hover { transform: translateY(-3px); }
+
+        .info-label {
+            font-size: 11px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        /* ─── Download Button ─── */
+        .download-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            box-shadow: 0 12px 32px rgba(52, 152, 219, 0.38);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 12px;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .download-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .download-button:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(52,152,219,0.45); }
+        .download-button:hover::before { transform: translateX(200%); }
+        .download-button:active { transform: translateY(0); }
+
+        .download-note {
+            text-align: center;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 32px;
+        }
+
+        /* ─── App Preview ─── */
+        .preview-section {
+            margin-bottom: 32px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+            border: 1px solid #e2e8f0;
+        }
+
+        .preview-label {
+            background: #f8faff;
+            padding: 12px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .preview-label::before { content: '●'; color: #ef4444; }
+        .preview-label::after  { content: '● ●'; color: #f59e0b; margin-left: -4px; letter-spacing: 4px; }
+
+        .preview-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* ─── Section ─── */
+        .section { margin-top: 38px; }
+
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ─── Requirements ─── */
+        .requirements-list {
+            background: #f8faff;
+            border-radius: 14px;
+            padding: 6px 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .requirement-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #e9eef5;
+        }
+
+        .requirement-item:last-child { border-bottom: none; }
+
+        .requirement-label { color: #64748b; font-size: 14px; }
+
+        .requirement-value { color: #1e293b; font-weight: 600; font-size: 14px; }
+
+        /* ─── Changelog ─── */
+        .changelog-list { list-style: none; padding: 0; }
+
+        .changelog-item {
+            padding: 13px 18px;
+            background: #f8faff;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: #475569;
+            font-size: 14px;
+            border-left: 3px solid #3498db;
+            transition: all 0.25s;
+        }
+
+        .changelog-item:hover { background: #eef4fb; transform: translateX(6px); }
+
+        /* ─── Tips Section ─── */
+        .tips-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 32px;
+        }
+
+        .tips-title {
+            color: #1e40af;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tips-list { list-style: none; padding: 0; }
+
+        .tip-item {
+            padding: 10px 0;
+            color: #1e3a8a;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            border-bottom: 1px solid rgba(30,58,138,0.08);
+        }
+
+        .tip-item:last-child { border-bottom: none; }
+
+        .tip-item::before {
+            content: '✓';
+            color: #3498db;
+            font-weight: 800;
+            font-size: 15px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ─── Social Grid ─── */
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .support-action-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 20px;
+            background: white;
+            border: 2px solid #e9eef5;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-action-card:hover {
+            border-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(52,152,219,0.12);
+        }
+
+        .support-action-card::after {
+            content: '→';
+            position: absolute;
+            right: 18px;
+            font-size: 18px;
+            color: #3498db;
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: all 0.3s;
+        }
+
+        .support-action-card:hover::after { opacity: 1; transform: translateX(0); }
+
+        .support-action-icon {
+            width: 48px;
+            height: 48px;
+            background: #f0f7ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .support-action-icon svg { width: 22px; height: 22px; fill: currentColor; color: #3498db; }
+
+        .support-action-card:hover .support-action-icon { background: #3498db; }
+        .support-action-card:hover .support-action-icon svg { color: white; }
+        .support-action-card:hover .support-action-icon .icon-emoji { filter: brightness(0) invert(1); }
+
+        .support-action-text { display: flex; flex-direction: column; }
+        .support-action-text strong { color: #1e293b; font-size: 15px; margin-bottom: 2px; }
+        .support-action-text span { color: #94a3b8; font-size: 13px; }
+
+        /* Platform-specific hover colors */
+        .card-youtube:hover  { border-color: #FF0000; }
+        .card-youtube:hover  .support-action-icon { background: #FF0000; }
+        .card-github:hover   { border-color: #24292e; }
+        .card-github:hover   .support-action-icon { background: #24292e; }
+        .card-fiverr:hover   { border-color: #1dbf73; }
+        .card-fiverr:hover   .support-action-icon { background: #1dbf73; }
+        .card-linkedin:hover { border-color: #0077b5; }
+        .card-linkedin:hover .support-action-icon { background: #0077b5; }
+        .card-portfolio:hover{ border-color: #6366f1; }
+        .card-portfolio:hover .support-action-icon { background: #6366f1; }
+        .card-email:hover    { border-color: #ea4335; }
+        .card-email:hover    .support-action-icon { background: #ea4335; }
+        .card-whatsapp:hover { border-color: #25D366; }
+        .card-whatsapp:hover .support-action-icon { background: #25D366; }
+
+        /* ─── Disclaimer ─── */
+        .disclaimer {
+            background: #f1f5f9;
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin-top: 24px;
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* ─── Footer ─── */
+        .footer {
+            text-align: center;
+            padding: 28px 40px;
+            background: #f8faff;
+            border-top: 1px solid #e9eef5;
+        }
+
+        .footer-text { color: #94a3b8; font-size: 13px; margin-bottom: 8px; }
+
+        .footer-link { color: #3498db; text-decoration: none; font-weight: 600; }
+        .footer-link:hover { text-decoration: underline; }
+
+        /* ─── Floating WhatsApp widget ─── */
+        .msg-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #18181b;
+            border: 1px solid #3f3f46;
+            border-radius: 40px;
+            padding: 8px 20px 8px 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .msg-float:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+            border-color: #52525b;
+            background: #27272a;
+        }
+
+        .msg-float-img-wrapper {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #3498db;
+            padding: 2px;
+            flex-shrink: 0;
+        }
+
+        .msg-float-img-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .msg-float-img-inner img { width: 100%; height: 100%; object-fit: cover; }
+
+        .msg-float-content { display: flex; flex-direction: column; }
+
+        .msg-float-title {
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .msg-float-status { display: flex; align-items: center; font-size: 13px; line-height: 1; gap: 6px; }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(34,197,94,0.5);
+            animation: status-pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes status-pulse {
+            0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+            70%  { transform: scale(1);    box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+        }
+
+        .status-text  { color: #22c55e; font-weight: 600; }
+        .status-sep   { color: #71717a; }
+        .status-avg   { color: #a1a1aa; }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            .header { padding: 36px 20px 58px; }
+            .header::after { display: none; }
+            .content { padding: 30px 20px; }
+            .app-title { font-size: 26px; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+            .support-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .info-grid { grid-template-columns: 1fr; }
+            .app-title { font-size: 22px; }
+            .download-button { font-size: 16px; padding: 16px; }
+            .msg-float { bottom: 16px; right: 16px; }
+            .status-avg, .status-sep { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated background -->
+    <div class="bg-animations" id="bgAnimations"></div>
+
+    <div class="container">
+        <div class="download-card">
+
+            <!-- ═══ HEADER ═══ -->
+            <div class="header">
+                <div class="header-shimmer"></div>
+                <div class="logo-wrap">✍️</div>
+                <h1 class="app-title">Shuky</h1>
+                <p class="app-subtitle">Advanced Human-Like Typing Bot</p>
+                <span class="version-badge">Version 3.0.1 — Stable</span>
+            </div>
+
+            <!-- ═══ CONTENT ═══ -->
+            <div class="content">
+
+                <!-- Antivirus Alert -->
+                <div class="alert-antivirus">
+                    <div class="alert-antivirus-icon">🛡️</div>
+                    <div class="alert-antivirus-body">
+                        <strong>Windows Defender / Antivirus Notice:</strong> PyInstaller-packaged executables are
+                        sometimes flagged as false positives by antivirus software. This is a known behavior.
+                        Shuky is <strong>100% open source</strong> — review the full source code on GitHub before
+                        running, or build the EXE yourself from <code>src/Shuky.py</code>.
+                    </div>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Version</div>
+                        <div class="info-value">3.0.1</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Released</div>
+                        <div class="info-value">25/07/2026</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">File Size</div>
+                        <div class="info-value">~22 MB</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Platform</div>
+                        <div class="info-value">Windows</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">File Name</div>
+                        <div class="info-value">Shuky_v3.0.1.exe</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Python Required</div>
+                        <div class="info-value">❌ No</div>
+                    </div>
+                </div>
+
+                <!-- Download Button -->
+                <a id="downloadBtn" href="./releases/v3.0.1/Shuky_v3.0.1.exe" download="Shuky_v3.0.1.exe"
+                    class="download-button" onclick="startDownload(event)">
+                    <span>⬇️</span>
+                    Download Shuky v3.0.1 for Windows
+                </a>
+                <p class="download-note">Free · No registration · No subscription</p>
+
+                <!-- App Preview -->
+                <div class="preview-section">
+                    <div class="preview-label">Shuky — App Preview</div>
+                    <img src="./assets/images/Shuky Preview.png" alt="Shuky App Screenshot" class="preview-img"
+                        loading="lazy">
+                </div>
+
+                <!-- System Requirements -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <div class="section-icon">⚙️</div>
+                        System Requirements
+                    </h2>
+                    <div class="requirements-list">
+                        <div class="requirement-item">
+                            <span class="requirement-label">Operating System</span>
+                            <span class="requirement-value">Windows 10 / 11 (64-bit)</span>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="requirement-label">RAM</span>
+                            <span class="requirement-value">2 GB minimum</span>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="requirement-label">Disk Space</span>
+                            <span class="requirement-value">~50 MB</span>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="requirement-label">Python</span>
+                            <span class="requirement-value">Not required (standalone EXE)</span>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="requirement-label">Internet</span>
+                            <span class="requirement-value">Not required</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What's New -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <div class="section-icon">📋</div>
+                        What's New in v3.0.1
+                    </h2>
+                    <ul class="changelog-list">
+                        <li class="changelog-item">✅ Taskbar icon fix — same <code>shukylogo.ico</code> in title bar, taskbar &amp; EXE via <code>AppUserModelID</code></li>
+                        <li class="changelog-item">✅ Standalone EXE — no Python installation required</li>
+                        <li class="changelog-item">✅ Auto-correct toggle — 0% error rate keeps final output 100% accurate</li>
+                        <li class="changelog-item">✅ Tuned default character delay: 0.665 – 1.258 sec per character</li>
+                        <li class="changelog-item">✅ Professional project structure with <code>src/</code>, <code>assets/</code>, <code>releases/</code></li>
+                        <li class="changelog-item">✅ Full pause / resume / stop controls with live typing timer</li>
+                    </ul>
+                </div>
+
+                <!-- Developer Channels -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <div class="section-icon">🌐</div>
+                        Follow &amp; Contact Developer
+                    </h2>
+                    <div class="support-grid">
+                        <a href="https://wa.me/+8801765245872?text=Hello%20Shuvo%2C%20I%20have%20a%20question%20about%20Shuky."
+                            target="_blank" class="support-action-card card-whatsapp">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>WhatsApp</strong>
+                                <span>Chat directly</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.youtube.com/channel/UCEJ0R871tF2PLT27q9azYWg" target="_blank"
+                            class="support-action-card card-youtube">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>YouTube</strong>
+                                <span>Tutorials &amp; Updates</span>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/engrshuvodas" target="_blank"
+                            class="support-action-card card-github">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>GitHub</strong>
+                                <span>Source code &amp; issues</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.fiverr.com/shuvo_das74886" target="_blank"
+                            class="support-action-card card-fiverr">
+                            <div class="support-action-icon" style="font-size:26px; color:#1dbf73;">f</div>
+                            <div class="support-action-text">
+                                <strong>Fiverr</strong>
+                                <span>Hire me for projects</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/engrshuvoda/" target="_blank"
+                            class="support-action-card card-linkedin">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>LinkedIn</strong>
+                                <span>Professional profile</span>
+                            </div>
+                        </a>
+
+                        <a href="https://engrshuvodas.github.io/SHUVO-_portfolio/" target="_blank"
+                            class="support-action-card card-portfolio">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>Portfolio</strong>
+                                <span>About &amp; projects</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:engrshuvoda@gmail.com" class="support-action-card card-email">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>Email</strong>
+                                <span>engrshuvoda@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <a href="https://x.com/engrshuvodas" target="_blank" class="support-action-card">
+                            <div class="support-action-icon" style="font-size:22px; font-weight:900; color:#1e293b; font-family:serif;">𝕏</div>
+                            <div class="support-action-text">
+                                <strong>X (Twitter)</strong>
+                                <span>@engrshuvodas</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Usage Tips -->
+                <div class="tips-section">
+                    <div class="tips-title">
+                        <span>💡</span>
+                        Tips for Best Results
+                    </div>
+                    <ul class="tips-list">
+                        <li class="tip-item">Click <strong>Start Typing</strong> then switch to your target window within the initial delay countdown</li>
+                        <li class="tip-item">Keep <strong>Error Rate = 0%</strong> to make all visible mistakes auto-corrected — final text will be 100% accurate</li>
+                        <li class="tip-item">Use <strong>Reset Timing</strong> to get randomized-but-realistic defaults each session</li>
+                        <li class="tip-item">Increase <strong>Character Delay</strong> if the target app can't keep up with typing speed</li>
+                        <li class="tip-item">Use <strong>Pause/Resume</strong> anytime mid-session without losing progress</li>
+                        <li class="tip-item">The typing timer counts only <em>active</em> typing time — paused time is excluded</li>
+                    </ul>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="disclaimer">
+                    <strong>Disclaimer:</strong> Shuky is designed for legitimate productivity use — bypassing copy-paste
+                    restrictions in forms, editors, and chat apps. Users are solely responsible for complying with the
+                    Terms of Service of any platform they use it with.
+                </div>
+
+            </div><!-- /content -->
+
+            <!-- ═══ FOOTER ═══ -->
+            <div class="footer">
+                <p class="footer-text">Released: July 25, 2026 &nbsp;·&nbsp; v3.0.1 Stable</p>
+                <p class="footer-text">
+                    Questions? <a href="https://wa.me/+8801765245872" target="_blank" class="footer-link">Chat on WhatsApp</a>
+                    &nbsp;or&nbsp;
+                    <a href="https://github.com/engrshuvodas/Shuky/issues" target="_blank" class="footer-link">Open a GitHub Issue</a>
+                </p>
+                <p class="footer-text" style="margin-top: 18px; color: #cbd5e1; font-size: 12px;">
+                    © 2026 Engr Shuvo Das · MIT License · Made with ❤️
+                </p>
+            </div>
+
+        </div><!-- /download-card -->
+    </div><!-- /container -->
+
+    <!-- ═══ Floating WhatsApp Widget ═══ -->
+    <a href="https://wa.me/+8801765245872?text=Hello%20Shuvo%2C%20I%20have%20a%20question%20about%20Shuky."
+        class="msg-float" target="_blank" title="Chat with Shuvo on WhatsApp">
+        <div class="msg-float-img-wrapper">
+            <div class="msg-float-img-inner">
+                <img src="https://github.com/engrshuvodas.png" alt="Engr Shuvo Das">
+            </div>
+        </div>
+        <div class="msg-float-content">
+            <div class="msg-float-title">Message · Shuvo</div>
+            <div class="msg-float-status">
+                <span class="status-dot"></span>
+                <span class="status-text">Online</span>
+                <span class="status-sep">·</span>
+                <span class="status-avg">Avg. reply: ~1 hour</span>
+            </div>
+        </div>
+    </a>
+
+    <script>
+        /* ── Download button animation ── */
+        function startDownload(e) {
+            const btn = document.getElementById('downloadBtn');
+            btn.innerHTML = '<span>⏳</span> Starting download…';
+            btn.style.background = 'linear-gradient(135deg, #2980b9, #1a6fa0)';
+
+            setTimeout(() => {
+                btn.innerHTML = '<span>✅</span> Download started!';
+                btn.style.background = 'linear-gradient(135deg, #27ae60, #1e8449)';
+                setTimeout(() => {
+                    btn.innerHTML = '<span>⬇️</span> Download Shuky v3.0.1 for Windows';
+                    btn.style.background = '';
+                }, 2500);
+            }, 2500);
+        }
+
+        /* ── Parallax background ── */
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 50;
+            const y = (e.clientY / window.innerHeight) * 50;
+            document.body.style.backgroundPosition = `${x}px ${y}px`;
+        });
+
+        /* ── Floating icons ── */
+        const icons = ['✍️', '⌨️', '📝', '💻', '🖊️', '✏️', '📄', '🤖', '⚡', '🎯', '🔤', '💡'];
+        const bgContainer = document.getElementById('bgAnimations');
+
+        function spawnIcon() {
+            const el = document.createElement('div');
+            el.className = 'floating-icon';
+            el.textContent = icons[Math.floor(Math.random() * icons.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            const dur = Math.random() * 8 + 12;
+            el.style.animationDuration = dur + 's';
+            el.style.fontSize = (Math.random() * 28 + 18) + 'px';
+            bgContainer.appendChild(el);
+            setTimeout(() => el.remove(), dur * 1000);
+        }
+
+        for (let i = 0; i < 18; i++) setTimeout(spawnIcon, Math.random() * 4000);
+        setInterval(spawnIcon, 800);
+    </script>
+</body>
+</html>
