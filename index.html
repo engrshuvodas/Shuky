@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<!-- saved from url=(0029)https://wasender.me/download/ -->
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download WASender v5.1.1</title>
+    <title>Download Shuky v3.0.1 — Advanced Human-Like Typing Bot</title>
     <meta name="description"
-        content="Download the latest version of WA Sender - Professional WhatsApp bulk messaging software with Meta compliance features">
+        content="Download the latest version of Shuky — a human-like typing automation bot with realistic delays, error simulation, and auto-correction. No Python required.">
+    <meta name="author" content="Engr Shuvo Das">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png"
-        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Download Shuky v3.0.1">
+    <meta property="og:description" content="Advanced Human-Like Typing Bot for Windows — free download.">
+    <meta property="og:image" content="./assets/images/Shuky Preview.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -22,8 +26,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1c2e 0%, #2d3561 50%, #1a1c2e 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -33,708 +37,488 @@
             overflow-x: hidden;
         }
 
-        /* Animated background */
+        /* Animated mesh background */
         body::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            position: fixed;
+            inset: 0;
             background-image:
-                radial-gradient(circle at 20% 50%, rgba(120, 255, 150, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(120, 150, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(255, 120, 200, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 15% 50%, rgba(52, 152, 219, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 85% 20%, rgba(155, 89, 182, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(46, 204, 113, 0.12) 0%, transparent 50%);
             z-index: 0;
+            pointer-events: none;
         }
 
+        /* Floating background animations */
+        .bg-animations {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.35);
+            user-select: none;
+            animation: float-up linear infinite;
+        }
+
+        @keyframes float-up {
+            0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 0.8; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* ─── Layout ─── */
         .container {
-            max-width: 950px;
+            max-width: 960px;
             width: 100%;
             position: relative;
             z-index: 1;
         }
 
         .download-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
             overflow: hidden;
-            animation: slideUp 0.6s ease-out;
+            animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
+        /* ─── Header ─── */
         .header {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            padding: 40px;
+            background: linear-gradient(135deg, #1a1c2e 0%, #2c3e50 50%, #3498db 100%);
+            padding: 48px 40px 68px;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        .header-shimmer {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%   { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
         }
 
         .header::after {
             content: '';
             position: absolute;
-            bottom: -20px;
+            bottom: -24px;
             left: 0;
             right: 0;
-            height: 40px;
+            height: 48px;
             background: white;
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            border-radius: 60% 60% 0 0 / 100% 100% 0 0;
         }
 
-        .logo {
-            width: 80px;
-            height: 80px;
+        .logo-wrap {
+            width: 88px;
+            height: 88px;
             background: white;
-            border-radius: 20px;
+            border-radius: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 22px;
+            font-size: 44px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
         }
 
         .app-title {
             color: white;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            color: rgba(255,255,255,0.75);
+            font-size: 15px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
         }
 
         .version-badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.15);
             color: white;
-            padding: 8px 20px;
+            padding: 8px 22px;
             border-radius: 50px;
             font-size: 14px;
             font-weight: 600;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .content {
-            padding: 40px;
-            padding-top: 30px;
-        }
-
-        /* Meta Warning Alert */
-        .meta-warning {
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
-            border: 2px solid #ff4444;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.25);
             position: relative;
-            overflow: hidden;
+            z-index: 1;
         }
 
-        .meta-warning::before {
-            content: '⚠️';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            font-size: 80px;
-            opacity: 0.1;
+        /* ─── Content ─── */
+        .content {
+            padding: 44px 40px 40px;
         }
 
-        .meta-warning-title {
-            color: #cc0000;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 10px;
+        /* ─── Alert ─── */
+        .alert-antivirus {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin-bottom: 28px;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            gap: 14px;
+            align-items: flex-start;
         }
 
-        .meta-warning-content {
-            color: #660000;
-            font-size: 14px;
-            line-height: 1.6;
-        }
+        .alert-antivirus-icon { font-size: 26px; flex-shrink: 0; line-height: 1; }
 
-        .meta-warning-content strong {
-            color: #cc0000;
-        }
+        .alert-antivirus-body { font-size: 14px; color: #78350f; line-height: 1.6; }
 
+        .alert-antivirus-body strong { color: #92400e; }
+
+        /* ─── Info Grid ─── */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
             margin-bottom: 30px;
         }
 
         .info-item {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #25D366;
+            background: #f8faff;
+            padding: 18px 20px;
+            border-radius: 14px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s;
         }
 
+        .info-item:hover { transform: translateY(-3px); }
+
         .info-label {
-            font-size: 12px;
-            color: #6c757d;
+            font-size: 11px;
+            color: #94a3b8;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
+            letter-spacing: 0.7px;
+            margin-bottom: 6px;
+            font-weight: 600;
         }
 
         .info-value {
-            font-size: 18px;
-            font-weight: 600;
-            color: #212529;
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e293b;
         }
 
+        /* ─── Download Button ─── */
         .download-button {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             width: 100%;
-            padding: 18px 40px;
-            background: linear-gradient(135deg, #25D366 0%, #20BA5C 100%);
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             color: white;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 18px;
-            font-weight: 600;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 12px 32px rgba(52, 152, 219, 0.38);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
             position: relative;
             overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .download-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+            margin-bottom: 12px;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
         }
 
         .download-button::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
         }
 
-        .download-button:hover::before {
-            width: 300px;
-            height: 300px;
+        .download-button:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(52,152,219,0.45); }
+        .download-button:hover::before { transform: translateX(200%); }
+        .download-button:active { transform: translateY(0); }
+
+        .download-note {
+            text-align: center;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 32px;
         }
 
-        .download-icon {
-            display: inline-block;
-            margin-right: 10px;
+        /* ─── App Preview ─── */
+        .preview-section {
+            margin-bottom: 32px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+            border: 1px solid #e2e8f0;
         }
 
-        .section {
-            margin-top: 40px;
-        }
-
-        .section-title {
-            font-size: 20px;
+        .preview-label {
+            background: #f8faff;
+            padding: 12px 20px;
+            font-size: 13px;
             font-weight: 600;
-            color: #212529;
-            margin-bottom: 20px;
+            color: #64748b;
+            border-bottom: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+        }
+
+        .preview-label::before { content: '●'; color: #ef4444; }
+        .preview-label::after  { content: '● ●'; color: #f59e0b; margin-left: -4px; letter-spacing: 4px; }
+
+        .preview-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* ─── Section ─── */
+        .section { margin-top: 38px; }
+
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .section-icon {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            border-radius: 8px;
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            font-size: 16px;
+            flex-shrink: 0;
         }
 
+        /* ─── Requirements ─── */
         .requirements-list {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
+            background: #f8faff;
+            border-radius: 14px;
+            padding: 6px 20px;
+            border: 1px solid #e2e8f0;
         }
 
         .requirement-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #e9ecef;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #e9eef5;
         }
 
-        .requirement-item:last-child {
-            border-bottom: none;
-        }
+        .requirement-item:last-child { border-bottom: none; }
 
-        .requirement-label {
-            color: #6c757d;
-            font-size: 14px;
-        }
+        .requirement-label { color: #64748b; font-size: 14px; }
 
-        .requirement-value {
-            color: #212529;
-            font-weight: 600;
-            font-size: 14px;
-        }
+        .requirement-value { color: #1e293b; font-weight: 600; font-size: 14px; }
 
-        .changelog-list {
-            list-style: none;
-            padding: 0;
-        }
+        /* ─── Changelog ─── */
+        .changelog-list { list-style: none; padding: 0; }
 
         .changelog-item {
-            padding: 12px 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
+            padding: 13px 18px;
+            background: #f8faff;
+            border-radius: 10px;
             margin-bottom: 10px;
-            color: #495057;
+            color: #475569;
             font-size: 14px;
-            transition: all 0.3s ease;
+            border-left: 3px solid #3498db;
+            transition: all 0.25s;
         }
 
-        .changelog-item:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
+        .changelog-item:hover { background: #eef4fb; transform: translateX(6px); }
+
+        /* ─── Tips Section ─── */
+        .tips-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 32px;
         }
 
-        /* Guidelines Section */
-        .guidelines-section {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
-            border: 1px solid #1890ff;
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 30px;
-        }
-
-        .guidelines-title {
-            color: #0050b3;
-            font-size: 18px;
+        .tips-title {
+            color: #1e40af;
+            font-size: 17px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .guidelines-list {
-            list-style: none;
-            padding: 0;
-        }
+        .tips-list { list-style: none; padding: 0; }
 
-        .guideline-item {
+        .tip-item {
             padding: 10px 0;
-            color: #003a8c;
+            color: #1e3a8a;
             font-size: 14px;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
+            border-bottom: 1px solid rgba(30,58,138,0.08);
         }
 
-        .guideline-item::before {
+        .tip-item:last-child { border-bottom: none; }
+
+        .tip-item::before {
             content: '✓';
-            color: #52c41a;
-            font-weight: bold;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 30px;
-            background: #f8f9fa;
-            border-top: 1px solid #e9ecef;
-        }
-
-        .footer-text {
-            color: #6c757d;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .footer-link {
-            color: #25D366;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer-link:hover {
-            text-decoration: underline;
-        }
-
-        .alert {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            color: #856404;
-            font-size: 14px;
-        }
-
-        .alert-icon {
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        /* Guideline Button Style */
-        /* Guideline Button Style - Premium Adjustment */
-        .guideline-container {
-            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
-            border: 2px dashed #007bff44;
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .guideline-container:hover {
-            border-color: #007bff88;
-            box-shadow: 0 15px 35px rgba(0, 123, 255, 0.1);
-        }
-
-        .guideline-text {
-            color: #004a99;
+            color: #3498db;
+            font-weight: 800;
             font-size: 15px;
-            margin-bottom: 18px;
-            font-weight: 600;
-            line-height: 1.5;
+            flex-shrink: 0;
+            margin-top: 1px;
         }
 
-        .guideline-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 700;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
-        }
-
-        .guideline-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
-            background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
-        }
-
-
-        /* Responsive Design System */
-        @media (max-width: 992px) {
-            .container {
-                max-width: 100%;
-                padding: 15px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                padding: 40px 20px;
-                border-radius: 0 0 30px 30px;
-                /* Nicer shape for mobile */
-            }
-
-            .header::after {
-                display: none;
-            }
-
-            /* Remove the complex wave on small screens */
-
-            .app-title {
-                font-size: 26px;
-            }
-
-            .content {
-                padding: 25px 15px;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
-            }
-
-            .support-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .section {
-                margin-top: 30px;
-            }
-
-            .section-title {
-                font-size: 18px;
-                margin-bottom: 15px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 10px;
-            }
-
-            .download-card {
-                border-radius: 15px;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            .header {
-                padding: 35px 15px;
-            }
-
-            .logo {
-                width: 60px;
-                height: 60px;
-                font-size: 30px;
-                margin-bottom: 15px;
-            }
-
-            .app-title {
-                font-size: 22px;
-            }
-
-            .version-badge {
-                font-size: 13px;
-                padding: 6px 15px;
-            }
-
-            .info-item {
-                padding: 15px;
-                border-radius: 10px;
-            }
-
-            .info-value {
-                font-size: 16px;
-            }
-
-            .download-button {
-                font-size: 15px;
-                padding: 16px 15px;
-                border-radius: 10px;
-            }
-
-            .support-action-card {
-                padding: 12px;
-                border-radius: 12px;
-                gap: 12px;
-            }
-
-            .support-action-icon {
-                width: 44px;
-                height: 44px;
-                font-size: 20px;
-                border-radius: 10px;
-            }
-
-            .support-action-text strong {
-                font-size: 15px;
-            }
-
-            .support-action-text span {
-                font-size: 12px;
-            }
-
-            .msg-float {
-                bottom: 20px;
-                right: 20px;
-                padding: 6px 16px 6px 6px;
-                border-radius: 35px;
-            }
-
-            .msg-float-img-wrapper {
-                width: 40px;
-                height: 40px;
-            }
-
-            .msg-float-title {
-                font-size: 14px;
-            }
-
-            .msg-float-status {
-                font-size: 11px;
-            }
-            
-            .status-avg {
-                display: none;
-            }
-            
-            .status-separator {
-                display: none;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .header {
-                padding: 30px 10px;
-            }
-
-            .app-title {
-                font-size: 19px;
-            }
-
-            .version-badge {
-                font-size: 11px;
-                padding: 5px 12px;
-            }
-
-            .section-title {
-                font-size: 17px;
-            }
-
-            .info-value {
-                font-size: 14px;
-            }
-
-            .download-button {
-                font-size: 14px;
-            }
-        }
-
-        /* Loading animation */
-        .downloading {
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.6;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Disclaimer text */
-        .disclaimer {
-            background: #f1f3f5;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #6c757d;
-            line-height: 1.5;
-            text-align: center;
-        }
-
-        /* Support Section */
+        /* ─── Social Grid ─── */
         .support-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
         }
 
         .support-action-card {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 20px;
+            padding: 18px 20px;
             background: white;
-            border: 2px solid #eef2f7;
+            border: 2px solid #e9eef5;
             border-radius: 16px;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
             position: relative;
             overflow: hidden;
         }
 
         .support-action-card:hover {
-            border-color: #25D366;
+            border-color: #3498db;
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.1);
+            box-shadow: 0 12px 28px rgba(52,152,219,0.12);
         }
 
         .support-action-card::after {
             content: '→';
             position: absolute;
-            right: 20px;
-            font-size: 20px;
-            color: #25D366;
+            right: 18px;
+            font-size: 18px;
+            color: #3498db;
             opacity: 0;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
+            transform: translateX(-8px);
+            transition: all 0.3s;
         }
 
-        .support-action-card:hover::after {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        .support-action-card:hover::after { opacity: 1; transform: translateX(0); }
 
         .support-action-icon {
-            width: 50px;
-            height: 50px;
-            background: #f0fff4;
+            width: 48px;
+            height: 48px;
+            background: #f0f7ff;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            color: #25D366;
-            transition: all 0.3s ease;
+            font-size: 22px;
+            transition: all 0.3s;
+            flex-shrink: 0;
         }
 
-        .support-action-card:hover .support-action-icon {
-            background: #25D366;
-            color: white;
-            transform: scale(1.1) rotate(5deg);
+        .support-action-icon svg { width: 22px; height: 22px; fill: currentColor; color: #3498db; }
+
+        .support-action-card:hover .support-action-icon { background: #3498db; }
+        .support-action-card:hover .support-action-icon svg { color: white; }
+        .support-action-card:hover .support-action-icon .icon-emoji { filter: brightness(0) invert(1); }
+
+        .support-action-text { display: flex; flex-direction: column; }
+        .support-action-text strong { color: #1e293b; font-size: 15px; margin-bottom: 2px; }
+        .support-action-text span { color: #94a3b8; font-size: 13px; }
+
+        /* Platform-specific hover colors */
+        .card-youtube:hover  { border-color: #FF0000; }
+        .card-youtube:hover  .support-action-icon { background: #FF0000; }
+        .card-github:hover   { border-color: #24292e; }
+        .card-github:hover   .support-action-icon { background: #24292e; }
+        .card-fiverr:hover   { border-color: #1dbf73; }
+        .card-fiverr:hover   .support-action-icon { background: #1dbf73; }
+        .card-linkedin:hover { border-color: #0077b5; }
+        .card-linkedin:hover .support-action-icon { background: #0077b5; }
+        .card-portfolio:hover{ border-color: #6366f1; }
+        .card-portfolio:hover .support-action-icon { background: #6366f1; }
+        .card-email:hover    { border-color: #ea4335; }
+        .card-email:hover    .support-action-icon { background: #ea4335; }
+        .card-whatsapp:hover { border-color: #25D366; }
+        .card-whatsapp:hover .support-action-icon { background: #25D366; }
+
+        /* ─── Disclaimer ─── */
+        .disclaimer {
+            background: #f1f5f9;
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin-top: 24px;
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.6;
+            text-align: center;
         }
 
-        .support-action-text {
-            display: flex;
-            flex-direction: column;
+        /* ─── Footer ─── */
+        .footer {
+            text-align: center;
+            padding: 28px 40px;
+            background: #f8faff;
+            border-top: 1px solid #e9eef5;
         }
 
-        .support-action-text strong {
-            color: #212529;
-            font-size: 16px;
-            margin-bottom: 2px;
-        }
+        .footer-text { color: #94a3b8; font-size: 13px; margin-bottom: 8px; }
 
-        .support-action-text span {
-            color: #6c757d;
-            font-size: 13px;
-        }
+        .footer-link { color: #3498db; text-decoration: none; font-weight: 600; }
+        .footer-link:hover { text-decoration: underline; }
 
-        /* Floating Message Widget */
+        /* ─── Floating WhatsApp widget ─── */
         .msg-float {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 28px;
+            right: 28px;
             background: #18181b;
             border: 1px solid #3f3f46;
             border-radius: 40px;
@@ -744,13 +528,13 @@
             gap: 12px;
             text-decoration: none;
             z-index: 1000;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .msg-float:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.5);
             border-color: #52525b;
             background: #27272a;
         }
@@ -760,12 +544,11 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            border: 2px solid #f59e0b;
-            flex-shrink: 0;
+            border: 2px solid #3498db;
             padding: 2px;
-            background: transparent;
+            flex-shrink: 0;
         }
-        
+
         .msg-float-img-inner {
             width: 100%;
             height: 100%;
@@ -773,265 +556,132 @@
             overflow: hidden;
         }
 
-        .msg-float-img-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .msg-float-img-inner img { width: 100%; height: 100%; object-fit: cover; }
 
-        .msg-float-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        .msg-float-content { display: flex; flex-direction: column; }
 
         .msg-float-title {
             color: white;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
-            margin-bottom: 4px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            text-align: left;
             line-height: 1;
+            margin-bottom: 5px;
         }
 
-        .msg-float-status {
-            display: flex;
-            align-items: center;
-            font-size: 13px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1;
-        }
+        .msg-float-status { display: flex; align-items: center; font-size: 13px; line-height: 1; gap: 6px; }
 
         .status-dot {
             width: 8px;
             height: 8px;
-            background-color: #22c55e;
+            background: #22c55e;
             border-radius: 50%;
-            margin-right: 6px;
-            box-shadow: 0 0 5px rgba(34, 197, 94, 0.5);
+            box-shadow: 0 0 5px rgba(34,197,94,0.5);
             animation: status-pulse 2s infinite;
+            flex-shrink: 0;
         }
 
         @keyframes status-pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+            0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+            70%  { transform: scale(1);    box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34,197,94,0); }
         }
 
-        .status-text {
-            color: #22c55e;
-            font-weight: 600;
+        .status-text  { color: #22c55e; font-weight: 600; }
+        .status-sep   { color: #71717a; }
+        .status-avg   { color: #a1a1aa; }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            .header { padding: 36px 20px 58px; }
+            .header::after { display: none; }
+            .content { padding: 30px 20px; }
+            .app-title { font-size: 26px; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+            .support-grid { grid-template-columns: 1fr; }
         }
 
-        .status-separator {
-            color: #71717a;
-            margin: 0 6px;
-        }
-
-        .status-avg {
-            color: #a1a1aa;
-        }
-
-        .support-action-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* Social Icons Branding */
-        .social-link-card[data-platform="youtube"]:hover {
-            border-color: #FF0000;
-        }
-
-        .social-link-card[data-platform="youtube"]:hover .support-action-icon {
-            background: #FF0000;
-            color: white;
-        }
-
-        .social-link-card[data-platform="github"]:hover {
-            border-color: #333;
-        }
-
-        .social-link-card[data-platform="github"]:hover .support-action-icon {
-            background: #333;
-            color: white;
-        }
-
-        .social-link-card[data-platform="fiverr"]:hover {
-            border-color: #1dbf73;
-        }
-
-        .social-link-card[data-platform="fiverr"]:hover .support-action-icon {
-            background: #1dbf73;
-            color: white;
-        }
-
-        .social-link-card[data-platform="linkedin"]:hover {
-            border-color: #0077b5;
-        }
-
-        .social-link-card[data-platform="linkedin"]:hover .support-action-icon {
-            background: #0077b5;
-            color: white;
-        }
-
-        .social-link-card[data-platform="portfolio"]:hover {
-            border-color: #6366f1;
-        }
-
-        .social-link-card[data-platform="portfolio"]:hover .support-action-icon {
-            background: #6366f1;
-            color: white;
-        }
-
-        .social-link-card[data-platform="email"]:hover {
-            border-color: #ea4335;
-        }
-
-        .social-link-card[data-platform="email"]:hover .support-action-icon {
-            background: #ea4335;
-            color: white;
-        }
-
-        /* Background Animated Icons */
-        .bg-animations {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .floating-icon {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.4);
-            /* Increased visibility */
-            font-size: 24px;
-            user-select: none;
-            animation: float-around linear infinite;
-            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-            z-index: -1;
-        }
-
-        @keyframes float-around {
-            0% {
-                transform: translateY(110vh) rotate(0deg) translateX(0);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 0.8;
-            }
-
-            90% {
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: translateY(-20vh) rotate(360deg) translateX(80px);
-                opacity: 0;
-            }
+        @media (max-width: 480px) {
+            .info-grid { grid-template-columns: 1fr; }
+            .app-title { font-size: 22px; }
+            .download-button { font-size: 16px; padding: 16px; }
+            .msg-float { bottom: 16px; right: 16px; }
+            .status-avg, .status-sep { display: none; }
         }
     </style>
 </head>
 
-<body style="background-position: 36.9792px 49.7582px;">
+<body>
+    <!-- Animated background -->
     <div class="bg-animations" id="bgAnimations"></div>
+
     <div class="container">
         <div class="download-card">
-            <!-- Header -->
+
+            <!-- ═══ HEADER ═══ -->
             <div class="header">
-                <div class="logo">💬</div>
-                <h1 class="app-title">WA Sender</h1>
-<span class="version-badge">Version 5.1.1</span>
+                <div class="header-shimmer"></div>
+                <div class="logo-wrap">✍️</div>
+                <h1 class="app-title">Shuky</h1>
+                <p class="app-subtitle">Advanced Human-Like Typing Bot</p>
+                <span class="version-badge">Version 3.0.1 — Stable</span>
             </div>
 
-            <!-- Content -->
+            <!-- ═══ CONTENT ═══ -->
             <div class="content">
-                <!-- Meta Warning -->
-                <div class="meta-warning">
-                    <div class="meta-warning-title">
-                        <span>🚨</span>
-                        IMPORTANT: Meta/WhatsApp Anti-Spam Policy
-                    </div>
-                    <div class="meta-warning-content">
-                        <strong>Meta (WhatsApp's parent company) actively restricts spam and mass messaging
-                            activities.</strong><br>
-                        Accounts that violate WhatsApp's Terms of Service may be temporarily or permanently banned.
-                        WA Sender includes safety features to help you comply with Meta's policies, but you must use it
-                        responsibly.
-                        <strong>Always obtain consent before messaging and avoid sending unsolicited promotional
-                            content.</strong>
-                    </div>
-                </div>
 
-                <!-- Windows Defender Alert -->
-                <div class="alert">
-                    <span class="alert-icon">⚠️</span>
-                    <strong>Note:</strong> Make sure Windows Defender or your antivirus is configured to allow the
-                    installation.
+                <!-- Antivirus Alert -->
+                <div class="alert-antivirus">
+                    <div class="alert-antivirus-icon">🛡️</div>
+                    <div class="alert-antivirus-body">
+                        <strong>Windows Defender / Antivirus Notice:</strong> PyInstaller-packaged executables are
+                        sometimes flagged as false positives by antivirus software. This is a known behavior.
+                        Shuky is <strong>100% open source</strong> — review the full source code on GitHub before
+                        running, or build the EXE yourself from <code>src/Shuky.py</code>.
+                    </div>
                 </div>
 
                 <!-- Info Grid -->
                 <div class="info-grid">
                     <div class="info-item">
                         <div class="info-label">Version</div>
-<div class="info-value">5.1.1</div>
+                        <div class="info-value">3.0.1</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">Updated</div>
-                        <div class="info-value">10/06/2026</div>
+                        <div class="info-label">Released</div>
+                        <div class="info-value">25/07/2026</div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">File Size</div>
-                        <div class="info-value">88.6MB</div>
+                        <div class="info-value">~22 MB</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Platform</div>
+                        <div class="info-value">Windows</div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">File Name</div>
-                        <div class="info-value">wasender.exe</div>
+                        <div class="info-value">Shuky_v3.0.1.exe</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Python Required</div>
+                        <div class="info-value">❌ No</div>
                     </div>
                 </div>
 
-                <!-- Guideline Section -->
-                <div class="guideline-container">
-                    <p class="guideline-text">
-                        Please read the guideline PDF carefully before starting the campaign.
-                    </p>
-                    <a href="./Top Tips and Guidelines for Securing WASENDER.pdf" download class="guideline-button">
-                        <span class="download-icon">📄</span>
-                        Download Guideline PDF
-                    </a>
-                </div>
-
                 <!-- Download Button -->
-                <a href="./Setup File/wasender.exe" download="wasender.exe" class="download-button"
-                    onclick="startDownload(event)">
-                    <span class="download-icon">⬇️</span>
-                    Download WASender for Windows
+                <a id="downloadBtn" href="./releases/v3.0.1/Shuky_v3.0.1.exe" download="Shuky_v3.0.1.exe"
+                    class="download-button" onclick="startDownload(event)">
+                    <span>⬇️</span>
+                    Download Shuky v3.0.1 for Windows
                 </a>
+                <p class="download-note">Free · No registration · No subscription</p>
+
+                <!-- App Preview -->
+                <div class="preview-section">
+                    <div class="preview-label">Shuky — App Preview</div>
+                    <img src="./assets/images/Shuky Preview.png" alt="Shuky App Screenshot" class="preview-img"
+                        loading="lazy">
+                </div>
 
                 <!-- System Requirements -->
                 <div class="section">
@@ -1042,314 +692,236 @@
                     <div class="requirements-list">
                         <div class="requirement-item">
                             <span class="requirement-label">Operating System</span>
-                            <span class="requirement-value">Windows 10/11 (64-bit)</span>
+                            <span class="requirement-value">Windows 10 / 11 (64-bit)</span>
                         </div>
                         <div class="requirement-item">
                             <span class="requirement-label">RAM</span>
-                            <span class="requirement-value">4 GB minimum (8 GB recommended)</span>
+                            <span class="requirement-value">2 GB minimum</span>
                         </div>
                         <div class="requirement-item">
                             <span class="requirement-label">Disk Space</span>
-                            <span class="requirement-value">500 MB</span>
+                            <span class="requirement-value">~50 MB</span>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="requirement-label">Python</span>
+                            <span class="requirement-value">Not required (standalone EXE)</span>
                         </div>
                         <div class="requirement-item">
                             <span class="requirement-label">Internet</span>
-                            <span class="requirement-value">Stable connection required</span>
-                        </div>
-                        <div class="requirement-item">
-                            <span class="requirement-label">.NET Framework</span>
-                            <span class="requirement-value">4.7.2 or higher</span>
+                            <span class="requirement-value">Not required</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Support Section -->
-                <div class="section">
-                    <h2 class="section-title">
-                        <div class="section-icon">💬</div>
-                        Activation & Support
-                    </h2>
-                    <div class="support-grid">
-                        <a href="https://wa.me/+919641700503?text=Hello,%20I%20need%20activation%20key%20for%20WA%20Sender"
-                            target="_blank" class="support-action-card">
-                            <div class="support-action-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
-                                </svg>
-                            </div>
-                            <div class="support-action-text">
-                                <strong>Get Activation Key</strong>
-                                <span>Instant license activation</span>
-                            </div>
-                        </a>
-                        <a href="https://wa.me/+919641700503?text=Hello,%20I%20need%20support%20for%20WA%20Sender"
-                            target="_blank" class="support-action-card">
-                            <div class="support-action-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2c-5.52 0-10 4.48-10 10v9h3v-7h-1v-2c0-4.41 3.59-8 8-8s8 3.59 8 8v2h-1v7h3v-9c0-5.52-4.48-10-10-10z" />
-                                </svg>
-                            </div>
-                            <div class="support-action-text">
-                                <strong>Contact Support</strong>
-                                <span>24/7 technical assistance</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Community & Social Section -->
-                <div class="section">
-                    <h2 class="section-title">
-                        <div class="section-icon">🌐</div>
-                        Follow Developer
-                    </h2>
-                    <div class="support-grid">
-                        <a href="https://www.youtube.com/@engr_shuvo" target="_blank"
-                            class="support-action-card social-link-card" data-platform="youtube">
-                            <div class="support-action-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                                </svg>
-                            </div>
-                            <div class="support-action-text">
-                                <strong>YouTube Channel</strong>
-                                <span>Tutorials & Updates</span>
-                            </div>
-                        </a>
-                        <a href="https://github.com/engrshuvodas" target="_blank"
-                            class="support-action-card social-link-card" data-platform="github">
-                            <div class="support-action-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                                </svg>
-                            </div>
-                            <div class="support-action-text">
-                                <strong>GitHub Profile</strong>
-                                <span>Source code & Projects</span>
-                            </div>
-                        </a>
-                        <a href="https://www.fiverr.com/shuvo_das74886" target="_blank"
-                            class="support-action-card social-link-card" data-platform="fiverr">
-                            <div class="support-action-icon">
-                                <svg viewBox="0 0 512 512">
-                                    <path
-                                        d="M416 33.3H96c-34.6 0-62.7 28.1-62.7 62.7V416c0 34.6 28.1 62.7 62.7 62.7H416c34.6 0 62.7-28.1 62.7-62.7V96c0-34.6-28.1-62.7-62.7-62.7zM167.3 358.5h-34.7V172.9h34.7v185.6zm70.6 0h-34.7V172.9h34.7v185.6zm99.8 0h-34.7v-76.4c0-21.3-8.8-32.9-26.4-32.9-17.6 0-26.4 11.6-26.4 32.9v76.4h-34.7V172.9h34.7v18.1c8.4-12.1 21.6-21.4 39.5-21.4 31.7 0 53.4 20.3 53.4 57.6v131.3zm84.3 0h-34.7V172.9h34.7v185.6z" />
-                                </svg>
-                            </div>
-                            <div class="support-action-text">
-                                <strong>Fiverr Reviews</strong>
-                                <span>Buy & Leave Review</span>
-                            </div>
-                        </a>
-                        <a href="https://www.linkedin.com/in/engr-shuvo-das-a28085260/" target="_blank"
-                            class="support-action-card social-link-card" data-platform="linkedin">
-                            <div class="support-action-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                </svg>
-                            </div>
-                            <div class="support-action-text">
-                                <strong>LinkedIn</strong>
-                                <span>Professional Profile</span>
-                            </div>
-                        </a>
-                        <a href="https://engr-shuvo-portfolio.vercel.app/" target="_blank"
-                            class="support-action-card social-link-card" data-platform="portfolio">
-                            <div class="support-action-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                                </svg>
-                            </div>
-                            <div class="support-action-text">
-                                <strong>Portfolio</strong>
-                                <span>About Me & Projects</span>
-                            </div>
-                        </a>
-                        <a href="mailto:engrshuvoda@gmail.com" target="_blank"
-                            class="support-action-card social-link-card" data-platform="email">
-                            <div class="support-action-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                                </svg>
-                            </div>
-                            <div class="support-action-text">
-                                <strong>Email Me</strong>
-                                <span>engrshuvoda@gmail.com</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Changelog -->
+                <!-- What's New -->
                 <div class="section">
                     <h2 class="section-title">
                         <div class="section-icon">📋</div>
-                        What's New in Version 5.1.1
+                        What's New in v3.0.1
                     </h2>
                     <ul class="changelog-list">
-                        <li class="changelog-item">✅Fixed </li>
-                        <!-- <li class="changelog-item">✅ Get Group Members – Fixed </li> -->
+                        <li class="changelog-item">✅ Taskbar icon fix — same <code>shukylogo.ico</code> in title bar, taskbar &amp; EXE via <code>AppUserModelID</code></li>
+                        <li class="changelog-item">✅ Standalone EXE — no Python installation required</li>
+                        <li class="changelog-item">✅ Auto-correct toggle — 0% error rate keeps final output 100% accurate</li>
+                        <li class="changelog-item">✅ Tuned default character delay: 0.665 – 1.258 sec per character</li>
+                        <li class="changelog-item">✅ Professional project structure with <code>src/</code>, <code>assets/</code>, <code>releases/</code></li>
+                        <li class="changelog-item">✅ Full pause / resume / stop controls with live typing timer</li>
                     </ul>
                 </div>
 
-                <!-- Compliance Guidelines -->
-                <div class="guidelines-section">
-                    <div class="guidelines-title">
-                        <span>📘</span>
-                        Best Practices for Meta Compliance
+                <!-- Developer Channels -->
+                <div class="section">
+                    <h2 class="section-title">
+                        <div class="section-icon">🌐</div>
+                        Follow &amp; Contact Developer
+                    </h2>
+                    <div class="support-grid">
+                        <a href="https://wa.me/+8801765245872?text=Hello%20Shuvo%2C%20I%20have%20a%20question%20about%20Shuky."
+                            target="_blank" class="support-action-card card-whatsapp">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>WhatsApp</strong>
+                                <span>Chat directly</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.youtube.com/channel/UCEJ0R871tF2PLT27q9azYWg" target="_blank"
+                            class="support-action-card card-youtube">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>YouTube</strong>
+                                <span>Tutorials &amp; Updates</span>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/engrshuvodas" target="_blank"
+                            class="support-action-card card-github">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>GitHub</strong>
+                                <span>Source code &amp; issues</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.fiverr.com/shuvo_das74886" target="_blank"
+                            class="support-action-card card-fiverr">
+                            <div class="support-action-icon" style="font-size:26px; color:#1dbf73;">f</div>
+                            <div class="support-action-text">
+                                <strong>Fiverr</strong>
+                                <span>Hire me for projects</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/engrshuvoda/" target="_blank"
+                            class="support-action-card card-linkedin">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>LinkedIn</strong>
+                                <span>Professional profile</span>
+                            </div>
+                        </a>
+
+                        <a href="https://engrshuvodas.github.io/SHUVO-_portfolio/" target="_blank"
+                            class="support-action-card card-portfolio">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>Portfolio</strong>
+                                <span>About &amp; projects</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:engrshuvoda@gmail.com" class="support-action-card card-email">
+                            <div class="support-action-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </div>
+                            <div class="support-action-text">
+                                <strong>Email</strong>
+                                <span>engrshuvoda@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <a href="https://x.com/engrshuvodas" target="_blank" class="support-action-card">
+                            <div class="support-action-icon" style="font-size:22px; font-weight:900; color:#1e293b; font-family:serif;">𝕏</div>
+                            <div class="support-action-text">
+                                <strong>X (Twitter)</strong>
+                                <span>@engrshuvodas</span>
+                            </div>
+                        </a>
                     </div>
-                    <ul class="guidelines-list">
-                        <li class="guideline-item">Send messages only to contacts who have opted-in</li>
-                        <li class="guideline-item">Avoid sending identical messages to multiple users</li>
-                        <li class="guideline-item">Use personalization variables to make messages unique</li>
-                        <li class="guideline-item">Respect WhatsApp Business hours (9 AM - 9 PM)</li>
-                        <li class="guideline-item">Limit your daily sending volume gradually</li>
-                        <li class="guideline-item">Never send promotional content without consent</li>
+                </div>
+
+                <!-- Usage Tips -->
+                <div class="tips-section">
+                    <div class="tips-title">
+                        <span>💡</span>
+                        Tips for Best Results
+                    </div>
+                    <ul class="tips-list">
+                        <li class="tip-item">Click <strong>Start Typing</strong> then switch to your target window within the initial delay countdown</li>
+                        <li class="tip-item">Keep <strong>Error Rate = 0%</strong> to make all visible mistakes auto-corrected — final text will be 100% accurate</li>
+                        <li class="tip-item">Use <strong>Reset Timing</strong> to get randomized-but-realistic defaults each session</li>
+                        <li class="tip-item">Increase <strong>Character Delay</strong> if the target app can't keep up with typing speed</li>
+                        <li class="tip-item">Use <strong>Pause/Resume</strong> anytime mid-session without losing progress</li>
+                        <li class="tip-item">The typing timer counts only <em>active</em> typing time — paused time is excluded</li>
                     </ul>
                 </div>
 
                 <!-- Disclaimer -->
                 <div class="disclaimer">
-                    <strong>Disclaimer:</strong> WA Sender is a tool designed for legitimate business communication.
-                    Users are solely responsible for complying with WhatsApp's Terms of Service, local laws, and
-                    regulations.
-                    We do not condone or support the use of our software for spam, harassment, or any illegal
-                    activities.
+                    <strong>Disclaimer:</strong> Shuky is designed for legitimate productivity use — bypassing copy-paste
+                    restrictions in forms, editors, and chat apps. Users are solely responsible for complying with the
+                    Terms of Service of any platform they use it with.
                 </div>
-            </div>
 
-            <!-- Footer -->
+            </div><!-- /content -->
+
+            <!-- ═══ FOOTER ═══ -->
             <div class="footer">
+                <p class="footer-text">Released: July 25, 2026 &nbsp;·&nbsp; v3.0.1 Stable</p>
                 <p class="footer-text">
-                    Last updated: June 10, 2026 </p>
-                <p class="footer-text">
-                    Need help?
-                    <a href="https://wa.me/+919641700503" target="_blank" class="footer-link">Chat on WhatsApp</a>
-                    or access the
-                    <a href="https://control.zaplink.net/" class="footer-link">Control Panel</a>
+                    Questions? <a href="https://wa.me/+8801765245872" target="_blank" class="footer-link">Chat on WhatsApp</a>
+                    &nbsp;or&nbsp;
+                    <a href="https://github.com/engrshuvodas/Shuky/issues" target="_blank" class="footer-link">Open a GitHub Issue</a>
                 </p>
-                <p class="footer-text" style="margin-top: 20px; color: #adb5bd; font-size: 12px;">
-                    © 2026 WA Sender. All rights reserved. WhatsApp is a trademark of Meta Platforms, Inc.
+                <p class="footer-text" style="margin-top: 18px; color: #cbd5e1; font-size: 12px;">
+                    © 2026 Engr Shuvo Das · MIT License · Made with ❤️
                 </p>
             </div>
-        </div>
-    </div>
 
-    <script>
-        function startDownload(event) {
-            // Don't prevent default to allow download
-            const button = event.target;
+        </div><!-- /download-card -->
+    </div><!-- /container -->
 
-            // Add downloading class
-            button.classList.add('downloading');
-            button.innerHTML = '<span class="download-icon">⏳</span> Starting download...';
-
-            // Return to normal after 3 seconds
-            setTimeout(() => {
-                button.classList.remove('downloading');
-                button.innerHTML = '<span class="download-icon">✅</span> Download started!';
-
-                // Return to original text after 2 more seconds
-                setTimeout(() => {
-                    button.innerHTML = '<span class="download-icon">⬇️</span> Download WA Sender for Windows';
-                }, 2000);
-            }, 3000);
-        }
-
-        // Add smooth parallax effect on background
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-
-            document.body.style.backgroundPosition = `${x * 50}px ${y * 50}px`;
-        });
-
-        // Show random tip every 30 seconds
-        const tips = [
-            "💡 Tip: Always warm up new numbers by starting with small volumes",
-            "💡 Tip: Use variable delays between messages to appear more human",
-            "💡 Tip: Personalize your messages with contact names and custom fields",
-            "💡 Tip: Test your campaigns with a small group first",
-            "💡 Tip: Avoid using shortened URLs in your messages"
-        ];
-
-        let tipIndex = 0;
-        setInterval(() => {
-            console.log(tips[tipIndex % tips.length]);
-            tipIndex++;
-        }, 30000);
-
-        // Background Animation Logic
-        const bgIcons = ['💬', '✉️', '💰', '📈', '🚀', '📊', '🤝', '💸', '📱', '🛒', '🎯', '📢', '🔥'];
-        const colors = ['#ffffff', '#25D366', '#FFD700', '#0077b5', '#FF4500', '#1dbf73'];
-        const bgContainer = document.getElementById('bgAnimations');
-
-        function createFloatingIcon() {
-            const icon = document.createElement('div');
-            icon.className = 'floating-icon';
-            icon.innerText = bgIcons[Math.floor(Math.random() * bgIcons.length)];
-
-            const startLeft = Math.random() * 100;
-            icon.style.left = startLeft + 'vw';
-
-            const duration = Math.random() * 8 + 10; // Faster movement (10-18s)
-            icon.style.animationDuration = duration + 's';
-
-            const size = Math.random() * 30 + 25; // Slightly larger (25-55px)
-            icon.style.fontSize = size + 'px';
-
-            // Random color/glow for some icons to make them pop
-            if (Math.random() > 0.4) {
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                icon.style.color = randomColor;
-                icon.style.filter = `drop-shadow(0 0 8px ${randomColor}66)`;
-            }
-
-            bgContainer.appendChild(icon);
-
-            setTimeout(() => {
-                icon.remove();
-            }, duration * 1000);
-        }
-
-        // Initialize more icons immediately
-        for (let i = 0; i < 20; i++) {
-            setTimeout(createFloatingIcon, Math.random() * 3000);
-        }
-
-        // Create icons more frequently
-        setInterval(createFloatingIcon, 700);
-
-    </script>
-    <script defer="" src="./Download WA Sender v4.11.8_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
-        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
-        data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;7b3c8a0adcc547149b5cb7d4668ff8a0&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}"
-        crossorigin="anonymous"></script>
-
-    <!-- Floating Message Widget -->
-    <a href="https://wa.me/+919641700503" class="msg-float" target="_blank" title="Chat with support">
+    <!-- ═══ Floating WhatsApp Widget ═══ -->
+    <a href="https://wa.me/+8801765245872?text=Hello%20Shuvo%2C%20I%20have%20a%20question%20about%20Shuky."
+        class="msg-float" target="_blank" title="Chat with Shuvo on WhatsApp">
         <div class="msg-float-img-wrapper">
             <div class="msg-float-img-inner">
-                <img src="https://github.com/engrshuvodas.png" alt="Shuvo">
+                <img src="https://github.com/engrshuvodas.png" alt="Engr Shuvo Das">
             </div>
         </div>
         <div class="msg-float-content">
-            <div class="msg-float-title">Message - Shuvo</div>
+            <div class="msg-float-title">Message · Shuvo</div>
             <div class="msg-float-status">
                 <span class="status-dot"></span>
                 <span class="status-text">Online</span>
-                <span class="status-separator">·</span>
-                <span class="status-avg">Avg. response time: 1 Hour</span>
+                <span class="status-sep">·</span>
+                <span class="status-avg">Avg. reply: ~1 hour</span>
             </div>
         </div>
     </a>
-</body>
 
+    <script>
+        /* ── Download button animation ── */
+        function startDownload(e) {
+            const btn = document.getElementById('downloadBtn');
+            btn.innerHTML = '<span>⏳</span> Starting download…';
+            btn.style.background = 'linear-gradient(135deg, #2980b9, #1a6fa0)';
+
+            setTimeout(() => {
+                btn.innerHTML = '<span>✅</span> Download started!';
+                btn.style.background = 'linear-gradient(135deg, #27ae60, #1e8449)';
+                setTimeout(() => {
+                    btn.innerHTML = '<span>⬇️</span> Download Shuky v3.0.1 for Windows';
+                    btn.style.background = '';
+                }, 2500);
+            }, 2500);
+        }
+
+        /* ── Parallax background ── */
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 50;
+            const y = (e.clientY / window.innerHeight) * 50;
+            document.body.style.backgroundPosition = `${x}px ${y}px`;
+        });
+
+        /* ── Floating icons ── */
+        const icons = ['✍️', '⌨️', '📝', '💻', '🖊️', '✏️', '📄', '🤖', '⚡', '🎯', '🔤', '💡'];
+        const bgContainer = document.getElementById('bgAnimations');
+
+        function spawnIcon() {
+            const el = document.createElement('div');
+            el.className = 'floating-icon';
+            el.textContent = icons[Math.floor(Math.random() * icons.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            const dur = Math.random() * 8 + 12;
+            el.style.animationDuration = dur + 's';
+            el.style.fontSize = (Math.random() * 28 + 18) + 'px';
+            bgContainer.appendChild(el);
+            setTimeout(() => el.remove(), dur * 1000);
+        }
+
+        for (let i = 0; i < 18; i++) setTimeout(spawnIcon, Math.random() * 4000);
+        setInterval(spawnIcon, 800);
+    </script>
+</body>
 </html>
