@@ -12,6 +12,10 @@
 
 > **Shuky** is a sophisticated typing automation bot that simulates human typing with realistic delays, visible error simulation, smart auto-correction, and fully configurable timing — perfect for bypassing copy-paste restrictions while keeping output 100% accurate.
 
+<br/>
+
+![Shuky App Preview](./assets/images/Shuky%20Preview.png)
+
 </div>
 
 ---
@@ -19,7 +23,7 @@
 ## 📋 Table of Contents
 
 - [Features](#-features)
-- [What's New in v2.5](#-whats-new-in-v25)
+- [What's New in v3.0.1](#-whats-new-in-v301)
 - [Version History](#-version-history)
 - [Requirements](#-requirements)
 - [Installation & Run (Python)](#-installation--run-python)
