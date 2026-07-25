@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="shukylogo.ico" alt="Shuky Logo" width="80"/>
+<img src="./assets/images/logo.png" alt="Shuky Logo" width="80"/>
 
 # 🤖 Shuky — Advanced Human-Like Typing Bot
 
