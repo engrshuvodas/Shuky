@@ -6,6 +6,23 @@ import time
 import random
 import webbrowser
 from tkinter import font as tkfont
+import sys
+import os
+import ctypes
+
+# Fix taskbar icon on Windows: must be called BEFORE creating the Tk window
+try:
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('Shuky.TypingBot.3.0.1')
+except Exception:
+    pass
+
+def resource_path(relative_path):
+    """Get absolute path to resource — works for dev and for PyInstaller one-file EXE."""
+    try:
+        base_path = sys._MEIPASS  # PyInstaller temp folder
+    except AttributeError:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 # Global variables
 stop_flag = False
@@ -44,7 +61,8 @@ def show_about():
         "- Human-like visible mistakes with backspace\n"
         "- When Error Rate = 0% → ALL mistakes are auto-corrected (final output 100% correct)\n"
         "- Configurable error rate (leave mistakes when >0%)\n"
-        "- Default typing speed tuned: 0.665 - 1.258 sec per char\n\n"
+        "- Default typing speed tuned: 0.665 - 1.258 sec per char\n"
+        "- Custom taskbar & window icon\n\n"
         "© 2025 Engr Shuvo Das - All Rights Reserved"
     )
 
@@ -347,6 +365,13 @@ class TimingControls:
 root = tk.Tk()
 root.title("Shuky - Advanced Typing Assistant v3.0.1")
 root.geometry("850x800")
+
+# Set window icon (title bar + taskbar)
+try:
+    _icon_path = resource_path("shukylogo.ico")
+    root.iconbitmap(_icon_path)
+except Exception:
+    pass
 root.resizable(False, False)
 
 # Custom colors
